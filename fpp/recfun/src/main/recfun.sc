@@ -10,9 +10,11 @@ def rem_outer_chars(chars: List[Char]): List[Char] =
 def is_balanced(pars: List[Char]): Boolean =
   if (pars.length % 2 != 0)
     false
-  else if pars.isEmpty
-    true
-  else false
+  else
+    if (pars.isEmpty)
+      true
+    else
+      is_balanced(rem_outer_chars(pars))
 
 
 is_parentheses('(')
@@ -24,5 +26,6 @@ only_parentheses(List('(', 'a', 'b', 'c', ')'))
 
 rem_outer_chars(List('a', 'b', 'c'))
 
-
+is_balanced(List('a', 'b', 'c'))
+is_balanced(List('a', 'b'))
 //if(chars.head == '(' || chars.last == ')')
